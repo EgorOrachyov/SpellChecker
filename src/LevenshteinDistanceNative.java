@@ -1,3 +1,9 @@
+import org.junit.Test;
+
+/**
+ * Native recursive implementation of Levenshtein Distance metric
+ * @warning This implementation is too slow (used only for fun)
+ */
 public class LevenshteinDistanceNative implements ISimilarityFactor {
 
     @Override
@@ -25,7 +31,8 @@ public class LevenshteinDistanceNative implements ISimilarityFactor {
         }
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         ISimilarityFactor factor = new LevenshteinDistanceNative();
 
         String[] sources = { "egor", "the", "A", "blaBlaBla", "terraform", "kitten", "undertanging" };

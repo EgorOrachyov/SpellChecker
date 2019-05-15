@@ -1,5 +1,11 @@
+import org.junit.Test;
+
 import java.util.Arrays;
 
+/**
+ * Matrix based implementation of Levenshtein Distance metric
+ * (has more acceptable performance then recursive implementation)
+ */
 public class LevenshteinDistanceMatrix implements ISimilarityFactor {
 
     @Override
@@ -34,7 +40,8 @@ public class LevenshteinDistanceMatrix implements ISimilarityFactor {
         return mat[srcLen][trgLen];
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void test() {
         ISimilarityFactor factor = new LevenshteinDistanceMatrix();
 
         String[] sources = { "egor", "the", "A", "blaBlaBla", "terraform", "kitten", "undertanging" };
