@@ -106,7 +106,7 @@ public class SpellChecker implements ISpellChecker {
     }
 
     @Override
-    public CheckResult getSuggestions(String word, boolean firstLettersAreEqual) {
+    public CheckResult getSuggestions(String word, boolean firstLetters) {
         if (word.isEmpty()) {
             return new CheckResult();
         }
@@ -116,7 +116,7 @@ public class SpellChecker implements ISpellChecker {
         suggestions.clear();
         userDataSuggestions.clear();
 
-        if (firstLettersAreEqual) {
+        if (firstLetters) {
             traverseTree(word.charAt(0) + "", lookup.getRoot().getChildNodes().get(word.charAt(0)));
         } else {
             traverseTree("", lookup.getRoot());
