@@ -27,11 +27,8 @@ try {
 }
 ```
 
-**PATH_TO_THE_DICTIONARY** - string path, could be used default 
-("resource/dict-english-default.txt") as an example  
-
-**PATH_TO_THE_USER_DEFINED_DICTIONARY** - string path to the user defined list of word, 
-could be used default ("resource/dict-english-custom.txt") as an example  
+* **PATH_TO_THE_DICTIONARY** - string path (default "resource/dict-english-default.txt")
+* **PATH_TO_THE_USER_DEFINED_DICTIONARY** - string path (default "resource/dict-english-custom.txt")
  
 ### How to create SpellChecker
  
@@ -83,6 +80,8 @@ if (result.fromUserData().size() > 0) {
     System.out.println("No suggestions from user words");
 }
 ```
+
+I have added some printing to get more beautiful and readable output.  
 
 ### Output of the program, listed bellow
 
