@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Spell-checker allows to check word whether it is written
- * correctly or not. If there is some kind of mistake, spellchecker should
+ * Spell checker allows to check word whether it is written
+ * correctly or not. If there is some kind of mistake, spell checker will
  * suggest a list of possible words, which could fix the mistake[s].
  *
  * Supports adding dictionaries (as simple associative containers) and

@@ -1,22 +1,19 @@
 # Spell Checker
 
 Spell checker allows to check word whether it is written correctly or not.
-If there is some kind of mistake, spellchecker should will suggest a list 
+If there is some kind of mistake, spellchecker will suggest a list 
 of possible words, which could fix the mistake(s).
 
 Allows to add dictionaries (as simple associative containers) and
 user data (defined words) in order to get separate suggestions: one from the
 dictionary and another from the user defined words set. 
 
-Uses Levenshtein distance function (matrix implementation) to measure 
-the similarity of words to build a suggestions list. 
-
 ## Example
 
 The following lines of code shows, how actually spell checker  
 could be used in a particular java program.
 
-How to load dictionaries:
+### How to load dictionaries
 
 ```java
 HashMap<String, Long> dictData = new HashMap<>();
@@ -30,13 +27,13 @@ try {
 }
 ```
 
-PATH_TO_THE_DICTIONARY - string path, could be used default 
+**PATH_TO_THE_DICTIONARY** - string path, could be used default 
 ("resource/dict-english-default.txt") as an example  
 
-PATH_TO_THE_USER_DEFINED_DICTIONARY - string path to the user defined list of word, 
+**PATH_TO_THE_USER_DEFINED_DICTIONARY** - string path to the user defined list of word, 
 could be used default ("resource/dict-english-custom.txt") as an example  
  
-How to create SpellChecker: 
+### How to create SpellChecker
  
 ```java
 ISpellChecker spellChecker = new SpellChecker();
@@ -48,7 +45,7 @@ We add our dictionary data in the spellChecker internal search tree.
 Also we add user data to be able sort suggestions from dictionary. It could 
 be useful if the user has his own (custom) words, which he want see separately.    
 
-Also customize our params:
+### Also customize our params
 
 ```java
 spellChecker.setMaxEditOperationCount(3);
@@ -59,7 +56,7 @@ We can set the max number of editing operations, which could be used to get
 the suggested word from the input word. Also we can limit the number of suggested 
 words, which will be returned by getSuggestion() function.  
 
-How to check the spelling of a concrete word:
+### How to check the spelling of a concrete word
 
 ```java
 String word = "swimmer";
@@ -87,7 +84,7 @@ if (result.fromUserData().size() > 0) {
 }
 ```
 
-It is the output of the program, listed bellow:
+### Output of the program, listed bellow
 
 ```
 Word: swimmer correct: true
@@ -112,10 +109,11 @@ No suggestions from user words
 * Allows only to load simple dictionaries
 * Takes nearly 11 ms to find suggestions (edits: 3, suggestions: 10)
 
-## How to build and run
+## How to build and run the application
 
 This project was created in the JetBrains IntelliJ IDEA 2017 (java 9).
-You can download the repository and open it as a simple project.
+You can download the repository and open it as a simple project or import it. To run
+console application you need to execute Application.Main class. 
 
 ## About
 
