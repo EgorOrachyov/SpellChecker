@@ -1,2 +1,5 @@
 # Ignore Finder DS files
 /**/.DS_Store
+
+# Ignore build fines
+/**/out
