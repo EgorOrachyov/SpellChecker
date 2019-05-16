@@ -1,3 +1,4 @@
+import Common.ISimilarityFactor;
 import org.junit.Test;
 
 import java.util.Arrays;

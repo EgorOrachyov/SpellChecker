@@ -1,3 +1,5 @@
+package Common;
+
 /**
  * Factor used in spell-checker
  */

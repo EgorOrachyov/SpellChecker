@@ -1,3 +1,6 @@
+import Common.IDictionary;
+import org.junit.Test;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -39,7 +42,13 @@ public class Dictionary implements IDictionary {
         return userWords.contains(word.toLowerCase());
     }
 
-    public static void main(String ... args) {
+    @Override
+    public Set<Map.Entry<String, Long>> getRawData() {
+        return dictionary.entrySet();
+    }
+
+    @Test
+    public void test() {
         IDictionary dictionary = new Dictionary();
         try {
             dictionary.loadDefaultDict("resource/dict-english-default.txt");

@@ -1,5 +1,8 @@
+package Common;
+
 import java.io.FileNotFoundException;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public interface IDictionary {
 
@@ -10,5 +13,7 @@ public interface IDictionary {
     boolean containsWord(String word);
 
     boolean isUserWord(String word);
+
+    Set<Map.Entry<String, Long>> getRawData();
 
 }
