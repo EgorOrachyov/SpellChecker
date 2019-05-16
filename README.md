@@ -12,7 +12,12 @@ with some kind of a mistake.
 The following lines of code shows, how actually SpellChecker 
 could be used in a particular java program:
 
+```$java
+
 ```
+
+```$java
+
 String word = "company";
 SpellChecker speller = new SpellChecker(data, userData);
 CheckResult result = speller.getSuggestions(word);

@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b996b173-28d1-4819-9f58-e4cba1717d8a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Common/SpellChecker.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Interfaces/ISpellChecker.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Utils/Range.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellChecker/Common/Dictionary.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellChecker/Common/LevenshteinDistanceMatrix.class" afterPath="$PROJECT_DIR$/out/production/SpellChecker/Common/LevenshteinDistanceMatrix.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellChecker/Common/LevenshteinDistanceNative.class" afterPath="$PROJECT_DIR$/out/production/SpellChecker/Common/LevenshteinDistanceNative.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellChecker/Common/PrefixTree$PrefixTreeNode.class" afterPath="$PROJECT_DIR$/out/production/SpellChecker/Common/PrefixTree$PrefixTreeNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellChecker/Common/PrefixTree.class" afterPath="$PROJECT_DIR$/out/production/SpellChecker/Common/PrefixTree.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellChecker/Interfaces/IDictionary.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellChecker/Interfaces/ISearchTree$ITreeNode.class" afterPath="$PROJECT_DIR$/out/production/SpellChecker/Interfaces/ISearchTree$ITreeNode.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellChecker/Interfaces/ISearchTree$TraverseEntry.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellChecker/Interfaces/ISearchTree.class" afterPath="$PROJECT_DIR$/out/production/SpellChecker/Interfaces/ISearchTree.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellChecker/Test/TestCommon.class" afterPath="$PROJECT_DIR$/out/production/SpellChecker/Test/TestCommon.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/SpellChecker/Utils/DictionaryLoader.class" afterPath="$PROJECT_DIR$/out/production/SpellChecker/Utils/DictionaryLoader.class" />
-      <change beforePath="$PROJECT_DIR$/resource/dict-english-custom.txt" afterPath="$PROJECT_DIR$/resource/dict-english-custom.txt" />
-      <change beforePath="$PROJECT_DIR$/src/Common/Dictionary.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/Common/LevenshteinDistanceMatrix.java" afterPath="$PROJECT_DIR$/src/Common/LevenshteinDistanceMatrix.java" />
-      <change beforePath="$PROJECT_DIR$/src/Common/LevenshteinDistanceNative.java" afterPath="$PROJECT_DIR$/src/Common/LevenshteinDistanceNative.java" />
-      <change beforePath="$PROJECT_DIR$/src/Common/PrefixTree.java" afterPath="$PROJECT_DIR$/src/Common/PrefixTree.java" />
-      <change beforePath="$PROJECT_DIR$/src/Interfaces/IDictionary.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/Interfaces/ISearchTree.java" afterPath="$PROJECT_DIR$/src/Interfaces/ISearchTree.java" />
-      <change beforePath="$PROJECT_DIR$/src/Test/TestCommon.java" afterPath="$PROJECT_DIR$/src/Test/TestCommon.java" />
-      <change beforePath="$PROJECT_DIR$/src/Utils/DictionaryLoader.java" afterPath="$PROJECT_DIR$/src/Utils/DictionaryLoader.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -81,7 +57,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SpellChecker.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SpellChecker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Common/SpellChecker.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="118">
@@ -99,6 +75,19 @@
                 <element signature="e#1631#1632#0" expanded="true" />
                 <element signature="e#1658#1659#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="345">
+                <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -509,7 +498,7 @@
       <workItem from="1557936470111" duration="1954000" />
       <workItem from="1557938489578" duration="5198000" />
       <workItem from="1557994839950" duration="5322000" />
-      <workItem from="1558007402793" duration="4432000" />
+      <workItem from="1558007402793" duration="4492000" />
     </task>
     <servers />
   </component>
@@ -546,7 +535,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16906000" />
+    <option name="totallyTimeSpent" value="16966000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -967,17 +956,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="210">
-            <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Common/SpellChecker.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
@@ -995,6 +973,17 @@
             <element signature="e#1631#1632#0" expanded="true" />
             <element signature="e#1658#1659#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="345">
+            <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
