@@ -1,11 +1,8 @@
-import Common.IDictionary;
-import Common.ISearchTree;
-import Utils.CharacterArray;
-import org.junit.Test;
+package Common;
 
-import java.io.FileNotFoundException;
+import Interfaces.ISearchTree;
+
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Prefix search tree implementation (or Trie) based on hash map, used
@@ -15,11 +12,16 @@ import java.util.Map;
  */
 public class PrefixTree<K,V> implements ISearchTree<K,V> {
 
+    /** Suppose, that root could not be a leaf node
+     * (however, if empty key[] arrays ar not prohibited, there can be stored value) */
     private final PrefixTreeNode root = new PrefixTreeNode(null);
+    private int height = 1;
+    private int nodesCount = 1;
 
     @Override
     public void put(K[] keys, V value) {
         PrefixTreeNode current = root;
+        int currentHeight = 1;
 
         for (K key : keys) {
             PrefixTreeNode next = current.childNodes.get(key);
@@ -29,10 +31,13 @@ public class PrefixTree<K,V> implements ISearchTree<K,V> {
                 next = new PrefixTreeNode(null);
                 current.childNodes.put(key, next);
                 current = next;
+                nodesCount += 1;
             }
+            currentHeight += 1;
         }
 
         current.value = value;
+        height = Math.max(height, currentHeight);
     }
 
     @Override
@@ -93,31 +98,13 @@ public class PrefixTree<K,V> implements ISearchTree<K,V> {
 
     }
 
-    @Test
-    public void test() {
-
-        IDictionary dictionary = new Dictionary();
-        try {
-            dictionary.loadDefaultDict("resource/dict-english-default.txt");
-            dictionary.loadCustomDict("resource/dict-english-custom.txt");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        String[] words = new String[]{ "egor", "the", "A", "blaBlaBla", "terraform" };
-
-        ISearchTree<Character, Long> tree = new PrefixTree<>();
-        for (Map.Entry<String, Long> word : dictionary.getRawData()) {
-            tree.put(CharacterArray.convert(word.getKey()), word.getValue());
-        }
-
-        for (String word : words) {
-            Long stat = tree.find(CharacterArray.convert(word.toLowerCase()));
-            if (stat != null) {
-                System.out.println(word + " " + stat);
-            }
-        }
-
+    @Override
+    public int getNodesCount() {
+        return nodesCount;
     }
 
+    @Override
+    public int getHeight() {
+        return height;
+    }
 }

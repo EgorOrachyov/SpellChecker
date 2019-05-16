@@ -1,4 +1,4 @@
-package Common;
+package Interfaces;
 
 /**
  * Search tree based on sequential key structures (or K[] key)
@@ -9,26 +9,6 @@ package Common;
  * @param <V> Type of the value, stored with each key
  */
 public interface ISearchTree<K,V> {
-
-    /**
-     * Node interface for the tree
-     * @param <V> Type of the value, stored with each key
-     *            Could be null, if this one node is an intermediate node
-     */
-    interface ITreeNode<V> {
-
-        /**
-         * @return Stored value of null if it is not presented
-         */
-        V getValue();
-
-        /**
-         * @return True if this node stores value, otherwise
-         *         False (if is is intermediate node)
-         */
-        boolean leaf();
-
-    }
 
     /**
      * Adds new pair (key[], value) to the tree.
@@ -53,5 +33,43 @@ public interface ISearchTree<K,V> {
     boolean contains(K[] keys);
 
     void traverse();
+
+    interface TraverseEntry<K,V> {
+
+        K nextKey(ITreeNode<V> node);
+
+    }
+
+    /**
+     * @return Current nodes count in the tree
+     */
+    int getNodesCount();
+
+    /**
+     * A branch height is a nodes count in the way from the root to the leaf.
+     * Tree height is the length of the longest branch in th tree
+     * @return Max branch length
+     */
+    int getHeight();
+
+    /**
+     * Node interface for the tree
+     * @param <V> Type of the value, stored with each key
+     *            Could be null, if this one node is an intermediate node
+     */
+    interface ITreeNode<V> {
+
+        /**
+         * @return Stored value of null if it is not presented
+         */
+        V getValue();
+
+        /**
+         * @return True if this node stores value, otherwise
+         *         False (if is is intermediate node)
+         */
+        boolean leaf();
+
+    }
 
 }

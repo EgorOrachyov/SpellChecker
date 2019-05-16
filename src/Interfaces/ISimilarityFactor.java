@@ -1,4 +1,4 @@
-package Common;
+package Interfaces;
 
 /**
  * Factor used in spell-checker

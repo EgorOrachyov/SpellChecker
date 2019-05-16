@@ -1,4 +1,6 @@
-import Common.IDictionary;
+package Common;
+
+import Interfaces.IDictionary;
 import org.junit.Test;
 
 import java.io.File;
@@ -45,24 +47,6 @@ public class Dictionary implements IDictionary {
     @Override
     public Set<Map.Entry<String, Long>> getRawData() {
         return dictionary.entrySet();
-    }
-
-    @Test
-    public void test() {
-        IDictionary dictionary = new Dictionary();
-        try {
-            dictionary.loadDefaultDict("resource/dict-english-default.txt");
-            dictionary.loadCustomDict("resource/dict-english-custom.txt");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        String[] words = new String[]{ "egor", "the", "A", "blaBlaBla", "terraform" };
-
-        for (String word : words) {
-            System.out.println(dictionary.containsWord(word) + " " + word);
-            System.out.println(dictionary.isUserWord(word) + " " + word);
-        }
     }
 
 }

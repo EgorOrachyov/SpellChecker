@@ -1,4 +1,4 @@
-package Common;
+package Interfaces;
 
 import java.io.FileNotFoundException;
 import java.util.Map;

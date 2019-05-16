@@ -1,4 +1,6 @@
-import Common.ISimilarityFactor;
+package Common;
+
+import Interfaces.ISimilarityFactor;
 import org.junit.Test;
 
 /**
