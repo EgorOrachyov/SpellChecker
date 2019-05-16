@@ -1,7 +1,10 @@
 package Utils;
 
-import java.util.Comparator;
-
+/**
+ * Info about one suggested word. Supposed to
+ * be used to sort all the suggestions it the order of
+ * the similarity and then of the usage count
+ */
 public class WordData {
 
     private final String word;

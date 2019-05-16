@@ -116,8 +116,10 @@ public class SpellChecker implements ISpellChecker {
         suggestions.clear();
         userDataSuggestions.clear();
 
-        if (firstLetters) {
-            traverseTree(word.charAt(0) + "", lookup.getRoot().getChildNodes().get(word.charAt(0)));
+        ISearchTree.ITreeNode<Character,Long> node = lookup.getRoot().getChildNodes().get(input.charAt(0));
+
+        if (firstLetters && node != null) {
+            traverseTree(input.charAt(0) + "", node);
         } else {
             traverseTree("", lookup.getRoot());
         }

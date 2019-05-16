@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Prefix search tree implementation (or Trie) based on hash map, used
- * for storing children (or sub-nodes) in the tree nodes
+ * Prefix search tree implementation (or Trie)
+ * (based on hash map which is used for storing children (or sub-nodes) of a node)
  * @param <K> Type of the symbols, which links the edges of the tree
  * @param <V> Type of the value, stored with each key
  */

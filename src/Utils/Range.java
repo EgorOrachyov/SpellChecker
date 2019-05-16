@@ -1,5 +1,6 @@
 package Utils;
 
+/** Not used */
 public class Range<T extends Comparable<T>> {
 
     private final T lowerBorder;
