@@ -7,9 +7,7 @@ import Utils.CharacterArray;
 import Utils.WordData;
 import Utils.WordDataComparator;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class SpellChecker implements ISpellChecker {
 
@@ -19,30 +17,50 @@ public class SpellChecker implements ISpellChecker {
     private int editsCount = DEFAULT_EDIT_OPERATIONS_COUNT;
     private int suggestionsCount = DEFAULT_SUGGESTIONS_COUNT;
 
-    private final Map<String, Long> dictionary;
     private final Set<String> userData;
-    private final ISearchTree<Character, Long> lookup = new PrefixTree<>();
+    private final ISearchTree<Character, Long> lookup;
 
     private ISimilarityFactor factor = new LevenshteinDistanceMatrix();
 
     private String input;
     private int inputLength;
 
-    private final ArrayList<WordData> suggestions = new ArrayList<>();
-    private final ArrayList<WordData> userDataSuggestions = new ArrayList<>();
+    private final PriorityQueue<WordData> suggestions;
+    private final PriorityQueue<WordData> userDataSuggestions;
+
+    public SpellChecker() {
+        userData = new HashSet<>();
+        lookup = new PrefixTree<>();
+
+        WordDataComparator comparator = new WordDataComparator();
+        suggestions = new PriorityQueue<>(suggestionsCount, comparator);
+        userDataSuggestions = new PriorityQueue<>(suggestionsCount, comparator);
+    }
 
     public SpellChecker(Map<String,Long> dict, Set<String> userData) {
-        this.dictionary = dict;
-        this.userData = userData;
+        this();
+        addDictionary(dict);
+        addUserData(userData);
+    }
 
-        for (Map.Entry<String, Long> word : dictionary.entrySet()) {
-            lookup.put(CharacterArray.convert(word.getKey()), word.getValue());
+    @Override
+    public void addDictionary(Map<String, Long> data) {
+        for (Map.Entry<String, Long> word : data.entrySet()) {
+            Character[] keys = CharacterArray.convert(word.getKey());
+            if (!lookup.contains(keys)) {
+                lookup.put(keys, word.getValue());
+            }
         }
     }
 
     @Override
+    public void addUserData(Set<String> data) {
+        userData.addAll(data);
+    }
+
+    @Override
     public boolean contains(String word) {
-        return dictionary.containsKey(word);
+        return lookup.contains(CharacterArray.convert(word));
     }
 
     @Override
@@ -84,32 +102,43 @@ public class SpellChecker implements ISpellChecker {
 
     @Override
     public CheckResult getSuggestions(String word) {
-        input = word;
+        return getSuggestions(word, true);
+    }
+
+    @Override
+    public CheckResult getSuggestions(String word, boolean firstLettersAreEqual) {
+        if (word.isEmpty()) {
+            return new CheckResult();
+        }
+
+        input = word.toLowerCase();
         inputLength = word.length();
         suggestions.clear();
         userDataSuggestions.clear();
 
-        traverseTree(word.charAt(0) + "", lookup.getRoot().getChildNodes().get(word.charAt(0)));
-
-        suggestions.sort(new WordDataComparator());
-
-        for (WordData data : suggestions) {
-            System.out.println(data.getWord() + " " + data.getEditsCount() + " " + data.getUsageCount());
+        if (firstLettersAreEqual) {
+            traverseTree(word.charAt(0) + "", lookup.getRoot().getChildNodes().get(word.charAt(0)));
+        } else {
+            traverseTree("", lookup.getRoot());
         }
 
-        userDataSuggestions.sort(new WordDataComparator());
+        ArrayList<String> fromDict = new ArrayList<>(suggestionsCount);
+        ArrayList<String> fromUserData = new ArrayList<>(suggestionsCount);
 
-        for (WordData data : userDataSuggestions) {
-            System.out.println(data.getWord() + " " + data.getEditsCount() + " " + data.getUsageCount());
+        while (fromDict.size() < suggestionsCount && !suggestions.isEmpty()) {
+            fromDict.add(suggestions.poll().getWord());
         }
 
-        return null;
+        while (fromDict.size() < suggestionsCount && !userDataSuggestions.isEmpty()) {
+            fromUserData.add(userDataSuggestions.poll().getWord());
+        }
+
+        return new CheckResult(fromDict, fromUserData);
     }
 
     private void traverseTree(String current, ISearchTree.ITreeNode<Character, Long> node) {
         final int currentLength = current.length();
         final int metric = factor.similarity(input, current);
-        final int delta = Math.abs(inputLength - currentLength);
 
         if (node.leaf()) {
             if (metric <= editsCount) {

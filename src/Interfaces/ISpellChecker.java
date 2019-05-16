@@ -1,28 +1,15 @@
 package Interfaces;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public interface ISpellChecker {
 
-    class CheckResult {
+    void addDictionary(Map<String, Long> data);
 
-        private List<String> options;
-        private List<String> userDefinedOptions;
-
-        public CheckResult(List<String> options, List<String> userDefinedOptions) {
-            this.options = options;
-            this.userDefinedOptions = userDefinedOptions;
-        }
-
-        public List<String> getOptions() {
-            return options;
-        }
-
-        public List<String> getUserDefinedOptions() {
-            return userDefinedOptions;
-        }
-
-    }
+    void addUserData(Set<String> data);
 
     void setMaxSuggestionsCount(int count);
 
@@ -41,5 +28,36 @@ public interface ISpellChecker {
     boolean userDefined(String word);
 
     CheckResult getSuggestions(String word);
+
+    CheckResult getSuggestions(String word, boolean firstLettersAreEqual);
+
+    /**
+     * Container to store suggestion from dictionary and
+     * suggestions based on user defined words
+     */
+    class CheckResult {
+
+        private List<String> options;
+        private List<String> userDefinedOptions;
+
+        public CheckResult() {
+            this.options = new ArrayList<>();
+            this.userDefinedOptions = new ArrayList<>();
+        }
+
+        public CheckResult(List<String> options, List<String> userDefinedOptions) {
+            this.options = options;
+            this.userDefinedOptions = userDefinedOptions;
+        }
+
+        public List<String> getOptions() {
+            return options;
+        }
+
+        public List<String> getUserDefinedOptions() {
+            return userDefinedOptions;
+        }
+
+    }
 
 }
