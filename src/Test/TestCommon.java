@@ -4,9 +4,11 @@ import Common.LevenshteinDistanceMatrix;
 import Common.LevenshteinDistanceNative;
 import Common.PrefixTree;
 
+import Common.SpellChecker;
 import Interfaces.ISimilarityFactor;
 import Interfaces.ISearchTree;
 
+import Interfaces.ISpellChecker;
 import Utils.DictionaryLoader;
 import Utils.Range;
 import Utils.CharacterArray;
@@ -158,5 +160,20 @@ public class TestCommon extends Assert {
         }
     }
 
+    @Test
+    public void spellCheckTraverseTest() {
+        HashMap<String, Long> data = new HashMap<>();
+        HashSet<String> userDefined = new HashSet<>();
+
+        try {
+            DictionaryLoader.loadDefaultDict("resource/dict-english-default.txt", data);
+            DictionaryLoader.loadCustomDict("resource/dict-english-custom.txt", data, userDefined);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        ISpellChecker spellChecker = new SpellChecker(data, userDefined);
+        spellChecker.getSuggestions("swimmer");
+    }
 
 }

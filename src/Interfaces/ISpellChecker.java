@@ -6,12 +6,10 @@ public interface ISpellChecker {
 
     class CheckResult {
 
-        private boolean correct;
         private List<String> options;
         private List<String> userDefinedOptions;
 
-        public CheckResult(boolean correct, List<String> options, List<String> userDefinedOptions) {
-            this.correct = correct;
+        public CheckResult(List<String> options, List<String> userDefinedOptions) {
             this.options = options;
             this.userDefinedOptions = userDefinedOptions;
         }
@@ -24,18 +22,19 @@ public interface ISpellChecker {
             return userDefinedOptions;
         }
 
-        public boolean isCorrect() {
-            return correct;
-        }
     }
 
     void setMaxSuggestionsCount(int count);
 
     void setMaxEditOperationCount(int count);
 
+    void setFactor(ISimilarityFactor factor);
+
     int getMaxSuggestionsCount();
 
     int getMaxEditOperationCount();
+
+    ISimilarityFactor getFactor();
 
     boolean contains(String word);
 
