@@ -4,11 +4,9 @@ import Common.LevenshteinDistanceMatrix;
 import Common.LevenshteinDistanceNative;
 import Common.PrefixTree;
 
-import Common.SpellChecker;
 import Interfaces.ISimilarityFactor;
 import Interfaces.ISearchTree;
 
-import Interfaces.ISpellChecker;
 import Utils.DictionaryLoader;
 import Utils.Range;
 import Utils.CharacterArray;

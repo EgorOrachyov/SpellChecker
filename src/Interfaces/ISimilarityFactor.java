@@ -7,7 +7,7 @@ public interface ISimilarityFactor {
 
     /**
      * String metric which is supposed to be used to get a non-negative
-     * value, which will show how much to strings are similar to each other
+     * value, which will show how much two strings are similar to each other.
      * Than less value, then strings more similar to each other
      *
      * similarity(a,b) = N
@@ -15,7 +15,7 @@ public interface ISimilarityFactor {
      *
      * if (D < N) then a and c are more similar than a and b
      *
-     * @param source Source string which is supposed to be check
+     * @param source Source string which is supposed to be checked
      * @param target Another string which is available for us
      * @return Non-negative factor value
      */

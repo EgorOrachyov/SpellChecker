@@ -7,7 +7,7 @@ import java.util.Set;
 
 /**
  * Spell-checker allows to check word whether it is written
- * correctly or not. If there is some kind of mistake, speller should
+ * correctly or not. If there is some kind of mistake, spellchecker should
  * suggest a list of possible words, which could fix the mistake[s].
  *
  * Supports adding dictionaries (as simple associative containers) and
@@ -116,11 +116,11 @@ public interface ISpellChecker {
             this.userDefinedOptions = userDefinedOptions;
         }
 
-        public List<String> getOptions() {
+        public List<String> fromDict() {
             return options;
         }
 
-        public List<String> getUserDefinedOptions() {
+        public List<String> fromUserData() {
             return userDefinedOptions;
         }
 

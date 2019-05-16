@@ -38,34 +38,63 @@ public class TestSpelling extends Assert {
                 "the", "A", "blaBlaBla", "terraform", "soil",
                 "house", "horse", "label", "list", "map", "array",
                 "shader", "cpu", "graphics", "engine", "gog",
-                "lol", "heee", "ddddd", ""
+                "lol", "heee", "ddddd", "akkfna",
+                "swimmer", "kitten", "cat", "ocean", "egor",
+                "the", "A", "blaBlaBla", "terraform", "soil",
+                "house", "horse", "label", "list", "map", "array",
+                "shader", "cpu", "graphics", "engine", "gog",
+                "lol", "heee", "ddddd", "akkfna",
+                "swimmer", "kitten", "cat", "ocean", "egor",
+                "the", "A", "blaBlaBla", "terraform", "soil",
+                "house", "horse", "label", "list", "map", "array",
+                "shader", "cpu", "graphics", "engine", "gog",
+                "lol", "heee", "ddddd", "akkfna",
+                "swimmer", "kitten", "cat", "ocean", "egor",
+                "the", "A", "blaBlaBla", "terraform", "soil",
+                "house", "horse", "label", "list", "map", "array",
+                "shader", "cpu", "graphics", "engine", "gog",
+                "lol", "heee", "ddddd", "akkfna",
+                "swimmer", "kitten", "cat", "ocean", "egor",
+                "the", "A", "blaBlaBla", "terraform", "soil",
+                "house", "horse", "label", "list", "map", "array",
+                "shader", "cpu", "graphics", "engine", "gog",
+                "lol", "heee", "ddddd", "akkfna",
+                "swimmer", "kitten", "cat", "ocean", "egor",
+                "the", "A", "blaBlaBla", "terraform", "soil",
+                "house", "horse", "label", "list", "map", "array",
+                "shader", "cpu", "graphics", "engine", "gog",
+                "lol", "heee", "ddddd", "akkfna",
         };
 
         for (String word : words) {
-            System.out.println(word);
+            //System.out.println(word);
             spellChecker.getSuggestions(word);
         }
     }
 
     @Test
     public void spellCheckTraverseTest() {
-        String word = "understangind";
+        String word = "swimmer";
+
+        spellChecker.setMaxEditOperationCount(3);
+        spellChecker.setMaxSuggestionsCount(8);
+
         ISpellChecker.CheckResult result = spellChecker.getSuggestions(word);
 
-        System.out.println("Word: " + word + " found: " + spellChecker.contains(word));
+        System.out.println("Word: " + word + " correct: " + spellChecker.contains(word));
 
-        if (result.getOptions().size() > 0) {
+        if (result.fromDict().size() > 0) {
             System.out.println("Possible suggestions from dictionary");
-            for (String s : result.getOptions()) {
+            for (String s : result.fromDict()) {
                 System.out.println(s);
             }
         } else {
             System.out.println("No suggestions from dictionary");
         }
 
-        if (result.getUserDefinedOptions().size() > 0) {
+        if (result.fromUserData().size() > 0) {
             System.out.println("Possible suggestions from user words");
-            for (String s : result.getUserDefinedOptions()) {
+            for (String s : result.fromUserData()) {
                 System.out.println(s);
             }
         } else {

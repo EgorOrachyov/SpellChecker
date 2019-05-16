@@ -28,9 +28,9 @@ public interface ISearchTree<K,V> {
     V find(K[] keys);
 
     /**
-     * Shows whether this key are presented in the tree
+     * Shows whether this keys are presented in the tree
      * @param keys Array of key sequence to check
-     * @return True if with this key is associated with value
+     * @return True if this key is associated with some value
      */
     boolean contains(K[] keys);
 
