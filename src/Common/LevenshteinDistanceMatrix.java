@@ -43,16 +43,4 @@ public class LevenshteinDistanceMatrix implements ISimilarityFactor {
         return mat[srcLen][trgLen];
     }
 
-    @Test
-    public void test() {
-        ISimilarityFactor factor = new LevenshteinDistanceMatrix();
-
-        String[] sources = { "egor", "the", "A", "blaBlaBla", "terraform", "kitten", "undertanging" };
-        String[] targets = { "egor", "the", "A", "blaBlaBla", "terraform", "sitten", "understanding"  };
-
-        for (int i = 0; i < sources.length; i++) {
-            System.out.println(sources[i] + " -> " + targets[i] + " " + factor.similarity(sources[i], targets[i]));
-        }
-    }
-
 }

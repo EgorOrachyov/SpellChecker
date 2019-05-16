@@ -3,6 +3,7 @@ package Common;
 import Interfaces.ISearchTree;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Prefix search tree implementation (or Trie) based on hash map, used
@@ -73,11 +74,21 @@ public class PrefixTree<K,V> implements ISearchTree<K,V> {
     }
 
     @Override
-    public void traverse() {
-
+    public int getNodesCount() {
+        return nodesCount;
     }
 
-    public class PrefixTreeNode implements ISearchTree.ITreeNode<V> {
+    @Override
+    public int getHeight() {
+        return height;
+    }
+
+    @Override
+    public ITreeNode<K, V> getRoot() {
+        return root;
+    }
+
+    public class PrefixTreeNode implements ISearchTree.ITreeNode<K,V> {
 
         V value;
         HashMap<K, PrefixTreeNode> childNodes = new HashMap<>();
@@ -96,15 +107,10 @@ public class PrefixTree<K,V> implements ISearchTree<K,V> {
             return (value != null);
         }
 
+        @Override
+        public Map<K, ? extends ITreeNode<K, V>> getChildNodes() {
+            return childNodes;
+        }
     }
 
-    @Override
-    public int getNodesCount() {
-        return nodesCount;
-    }
-
-    @Override
-    public int getHeight() {
-        return height;
-    }
 }

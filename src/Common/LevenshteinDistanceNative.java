@@ -34,16 +34,4 @@ public class LevenshteinDistanceNative implements ISimilarityFactor {
         }
     }
 
-    @Test
-    public void test() {
-        ISimilarityFactor factor = new LevenshteinDistanceNative();
-
-        String[] sources = { "egor", "the", "A", "blaBlaBla", "terraform", "kitten", "undertanging" };
-        String[] targets = { "egor", "the", "A", "blaBlaBla", "terraform", "sitten", "understanding" };
-
-        for (int i = 0; i < sources.length; i++) {
-            System.out.println(sources[i] + " -> " + targets[i] + " " + factor.similarity(sources[i], targets[i]));
-        }
-    }
-
 }

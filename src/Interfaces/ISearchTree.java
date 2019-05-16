@@ -1,5 +1,7 @@
 package Interfaces;
 
+import java.util.Map;
+
 /**
  * Search tree based on sequential key structures (or K[] key)
  * Allows to store pairs of (keys[], value)
@@ -32,14 +34,6 @@ public interface ISearchTree<K,V> {
      */
     boolean contains(K[] keys);
 
-    void traverse();
-
-    interface TraverseEntry<K,V> {
-
-        K nextKey(ITreeNode<V> node);
-
-    }
-
     /**
      * @return Current nodes count in the tree
      */
@@ -53,11 +47,16 @@ public interface ISearchTree<K,V> {
     int getHeight();
 
     /**
+     * @return Get the root of the tree
+     */
+    ITreeNode<K,V> getRoot();
+
+    /**
      * Node interface for the tree
      * @param <V> Type of the value, stored with each key
      *            Could be null, if this one node is an intermediate node
      */
-    interface ITreeNode<V> {
+    interface ITreeNode<K,V> {
 
         /**
          * @return Stored value of null if it is not presented
@@ -69,6 +68,11 @@ public interface ISearchTree<K,V> {
          *         False (if is is intermediate node)
          */
         boolean leaf();
+
+        /**
+         * @return All the sub-nodes of this in the map
+         */
+        Map<K, ? extends ITreeNode<K, V>> getChildNodes();
 
     }
 
