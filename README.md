@@ -8,6 +8,81 @@ Allows to add dictionaries (as simple associative containers) and
 user data (defined words) in order to get separate suggestions: one from the
 dictionary and another from the user defined words set. 
 
+## Console application
+
+To run console application you have to execute Application.Main class. 
+The following output shows, how ypu can interact with the app:
+
+```
++--------------------------------------------+
+|                SpellChecker                |
++--------------------------------------------+
+| Enter word to check, whether it is correct |
+| or not (suggestions will be generated      |
+| (enter __exit__ to exit the application)   |
++--------------------------------------------+
+
+Input: swimmer
+correct spelling
+``` 
+
+It gives some notes and then invites to write a word to check for spelling.
+Here we tap word 'swimmer'. It is correct - no suggestions.
+
+```
+Input: swimer
+Possible suggestions
+swimmer
+summer
+swim
+spider
+swine
+simmer
+shiver
+slime
+seiner
+slider
+```
+
+Tap word 'swimer'. We lost one 'm' letter. It is not correct, therefore
+the application will suggest some words, which probably we wanted to tab.
+
+```
+Input: glsl
+correct spelling [user word]
+```
+
+Also we enter some word, which was marked as used data (or user words list).
+
+```
+Input: glslm
+Possible suggestions
+glsl
+gloom
+gleam
+gsm
+glum
+gls
+glm
+gold
+girl
+gas
+Possible suggestions [user words]
+glsl
+```
+
+In the example above we have made a mistake in the word 'glsl'. So the spell
+checker suggests a word from user defined words list. Note: glsl word 
+was defined as user word in separate txt file.
+
+```
+Input: __exit__
+
+Process finished with exit code 0
+```  
+
+Enter '\_\_exit__' to leave the application.
+
 ## Example
 
 The following lines of code shows, how actually spell checker  
