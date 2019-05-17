@@ -131,7 +131,7 @@ public class SpellChecker implements ISpellChecker {
             fromDict.add(suggestions.poll().getWord());
         }
 
-        while (fromDict.size() < suggestionsCount && !userDataSuggestions.isEmpty()) {
+        while (fromUserData.size() < suggestionsCount && !userDataSuggestions.isEmpty()) {
             fromUserData.add(userDataSuggestions.poll().getWord());
         }
 

@@ -6,14 +6,18 @@ import Utils.DictionaryLoader;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.HashSet;
 
+@RunWith(Parameterized.class)
 public class TestSpelling extends Assert {
 
     private static final ISpellChecker spellChecker;
+    private final String word;
 
     static {
         HashMap<String, Long> dictData = new HashMap<>();
@@ -31,57 +35,31 @@ public class TestSpelling extends Assert {
         spellChecker.addUserData(userData);
     }
 
-    @Test
-    public void test() {
-        String[] words = new String[] {
-                "swimmer", "kitten", "cat", "ocean", "egor",
-                "the", "A", "blaBlaBla", "terraform", "soil",
-                "house", "horse", "label", "list", "map", "array",
-                "shader", "cpu", "graphics", "engine", "gog",
-                "lol", "heee", "ddddd", "akkfna",
-                "swimmer", "kitten", "cat", "ocean", "egor",
-                "the", "A", "blaBlaBla", "terraform", "soil",
-                "house", "horse", "label", "list", "map", "array",
-                "shader", "cpu", "graphics", "engine", "gog",
-                "lol", "heee", "ddddd", "akkfna",
-                "swimmer", "kitten", "cat", "ocean", "egor",
-                "the", "A", "blaBlaBla", "terraform", "soil",
-                "house", "horse", "label", "list", "map", "array",
-                "shader", "cpu", "graphics", "engine", "gog",
-                "lol", "heee", "ddddd", "akkfna",
-                "swimmer", "kitten", "cat", "ocean", "egor",
-                "the", "A", "blaBlaBla", "terraform", "soil",
-                "house", "horse", "label", "list", "map", "array",
-                "shader", "cpu", "graphics", "engine", "gog",
-                "lol", "heee", "ddddd", "akkfna",
-                "swimmer", "kitten", "cat", "ocean", "egor",
-                "the", "A", "blaBlaBla", "terraform", "soil",
-                "house", "horse", "label", "list", "map", "array",
-                "shader", "cpu", "graphics", "engine", "gog",
-                "lol", "heee", "ddddd", "akkfna",
-                "swimmer", "kitten", "cat", "ocean", "egor",
-                "the", "A", "blaBlaBla", "terraform", "soil",
-                "house", "horse", "label", "list", "map", "array",
-                "shader", "cpu", "graphics", "engine", "gog",
-                "lol", "heee", "ddddd", "akkfna",
-        };
+    public TestSpelling(String word) {
+        this.word = word;
+    }
 
-        for (String word : words) {
-            //System.out.println(word);
-            spellChecker.getSuggestions(word);
-        }
+    @Parameterized.Parameters
+    public static Object[] inputWords() {
+        return new Object[] {
+                "swimmer", "kitten", "cat", "ocean", "egor",
+                "the", "A", "blaBlaBla", "terraform", "soil",
+                "house", "horse", "label", "list", "map", "array",
+                "shader", "cpu", "graphics", "engine", "gog",
+                "lol", "heee", "ddddd", "akkfna"
+        };
     }
 
     @Test
     public void spellCheckTraverseTest() {
-        String word = "swimmer";
-
         spellChecker.setMaxEditOperationCount(3);
         spellChecker.setMaxSuggestionsCount(8);
 
         ISpellChecker.CheckResult result = spellChecker.getSuggestions(word);
 
-        System.out.println("Word: " + word + " correct: " + spellChecker.contains(word));
+        System.out.println("Word: " + word + " | correct: " +
+                spellChecker.contains(word) + " | user defined: " +
+                spellChecker.userDefined(word));
 
         if (result.fromDict().size() > 0) {
             System.out.println("Possible suggestions from dictionary");
