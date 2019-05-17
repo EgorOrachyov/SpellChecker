@@ -62,7 +62,7 @@ ISpellChecker.CheckResult result = spellChecker.getSuggestions(word);
 
 System.out.println("Word: " + word + " correct: " + correct);
 
-if (result.fromDict().size() > 0) {
+if (!result.fromDict().isEmpty()) {
     System.out.println("Possible suggestions from dictionary");
     for (String s : result.fromDict()) {
         System.out.println(s);
@@ -71,7 +71,7 @@ if (result.fromDict().size() > 0) {
     System.out.println("No suggestions from dictionary");
 }
 
-if (result.fromUserData().size() > 0) {
+if (!result.fromUserData().isEmpty()) {
     System.out.println("Possible suggestions from user words");
     for (String s : result.fromUserData()) {
         System.out.println(s);
@@ -80,8 +80,6 @@ if (result.fromUserData().size() > 0) {
     System.out.println("No suggestions from user words");
 }
 ```
-
-I have added some printing to get more beautiful and readable output.  
 
 ### Output of the program, listed bellow
 
